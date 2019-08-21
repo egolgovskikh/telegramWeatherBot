@@ -19,6 +19,9 @@ while (true) {
 
     //По каждому сообщению пробегаемся
     foreach ($updates as $update) {
+        //Логи
+        $username = $update->message->chat->username;
+        echo ("{$username} сделал запрос");
 
         if (isset($update->message->location)) {
 
@@ -126,6 +129,7 @@ while (true) {
 
             //На каждое сообщение отвечаем
             $telegramApi->sendMessage($update->message->chat->id, $response);
+
 
             //Запись в бд
 
