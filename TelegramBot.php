@@ -5,7 +5,7 @@ use GuzzleHttp\Client;
 class TelegramBot
 {
     //613458937:AAEs5eco-y-ozGz5AaisVZHfYR1idKgn284
-    protected $token = "987928654:AAHcrkwh635R8uO1keMm1yF57_WTfgXcwqQ";
+    protected $token = "613458937:AAEs5eco-y-ozGz5AaisVZHfYR1idKgn284";
 
     protected $updateId;
 

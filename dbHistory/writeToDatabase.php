@@ -9,7 +9,7 @@ function writeToDb ($username, $latitude, $longitude) {
 
     //Соединение с БД
     $link = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка " . mysqli_error($link));
+    or die("Ошибка подключения к БД" . mysqli_error($link));
 
     $date = date("Y-m-d H:i:s", strtotime("+3 hours"));
     $query = "INSERT INTO `history`(`time`, `username`, `latitude`, `longitude`) VALUES ('$date', '$username', '$latitude', '$longitude')";

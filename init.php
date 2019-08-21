@@ -22,13 +22,6 @@ while (true) {
 
         if (isset($update->message->location)) {
 
-            //Запись в бд
-            $username = $update->message->chat->username;
-            $latitude = $update->message->location->latitude;
-            $longitude = $update->message->location->longitude;
-
-            writeToDb($username, $latitude, $longitude);
-
             //Получаем погоду
             $result = $weatherApi->getWeather($update->message->location->latitude, $update->message->location->longitude);
 
@@ -133,6 +126,13 @@ while (true) {
 
             //На каждое сообщение отвечаем
             $telegramApi->sendMessage($update->message->chat->id, $response);
+
+            //Запись в бд
+            $username = $update->message->chat->username;
+            $latitude = $update->message->location->latitude;
+            $longitude = $update->message->location->longitude;
+
+            writeToDb($username, $latitude, $longitude);
 
         } elseif ($update->message->text === "/location") {
             //команда /location
