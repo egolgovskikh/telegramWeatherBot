@@ -1,2 +1,1 @@
-web: php index.php
-.listen(process.env.PORT || 5000)
+web: vendor/bin/heroku-php-apache2
