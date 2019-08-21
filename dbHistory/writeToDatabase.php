@@ -9,11 +9,13 @@ function writeToDb ($username, $latitude, $longitude) {
 
     //Соединение с БД
     $link = mysqli_connect($host, $user, $password, $database)
-    or die("Ошибка подключения к БД" . mysqli_error($link));
+    or print_r("Ошибка подключения к БД");
+    //die("Ошибка подключения к БД" . mysqli_error($link));
 
     $date = date("Y-m-d H:i:s", strtotime("+3 hours"));
     $query = "INSERT INTO `history`(`time`, `username`, `latitude`, `longitude`) VALUES ('$date', '$username', '$latitude', '$longitude')";
-    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
+    $result = mysqli_query($link, $query) or print_r("Ошибка записи в БД");
+    //die("Ошибка " . mysqli_error($link));
     if ($result) {
         echo "{$date} - Выполнение запроса от {$username} прошло успешно \n";
     }
