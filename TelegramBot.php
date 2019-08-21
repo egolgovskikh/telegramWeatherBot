@@ -6,7 +6,7 @@ ini_set('display_errors',1);
 
 class TelegramBot
 {
-    protected $token = "613458937:AAEs5eco-y-ozGz5AaisVZHfYR1idKgn284";
+    protected $token = "987928654:AAHcrkwh635R8uO1keMm1yF57_WTfgXcwqQ";
 
     protected $updateId;
 
@@ -37,7 +37,7 @@ class TelegramBot
             'offset' => $this->updateId + 1
         ]);
 
-        if (!empty($response)) {
+        if (!empty($response) && isset($response->result[count($response->result) - 1])) {
             $this->updateId = $response->result[count($response->result) - 1]->update_id;
         }
 

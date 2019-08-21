@@ -128,20 +128,20 @@ while (true) {
             }
 
             //На каждое сообщение отвечаем
-            return $telegramApi->sendMessage($update->message->chat->id, $response);
+            $telegramApi->sendMessage($update->message->chat->id, $response);
 
 
         } elseif ($update->message->text === "/location") {
             //команда /location
-            return $telegramApi->sendMessage($update->message->chat->id, "\xF0\x9F\x8C\x8D");
+            $telegramApi->sendMessage($update->message->chat->id, "\xF0\x9F\x8C\x8D");
         } elseif ($update->message->text === "/description") {
             //команда /location
-            return $telegramApi->sendMessage(
+            $telegramApi->sendMessage(
                 $update->message->chat->id,
                 "Бот для определения погоды. Чтобы отправить локацию нажмите на \"Прикрепить\" (скрепка) -> \"Местоположение\"");
         } else {
             //На каждое сообщение отвечаем
-            return $telegramApi->sendMessage($update->message->chat->id, "Отправьте местоположение \xF0\x9F\x8C\x8D");
+            $telegramApi->sendMessage($update->message->chat->id, "Отправьте местоположение \xF0\x9F\x8C\x8D");
         }
 
     }
