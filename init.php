@@ -1,9 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Бот работает!</h1>
+</body>
+</html>
+
 <?php
 
 include("vendor/autoload.php");
 include('TelegramBot.php');
 include("Weather.php");
-include ("dbHistory/writeToDatabase.php");
+include("dbHistory/writeToDatabase.php");
 
 //Получаем сообщения
 $telegramApi = new TelegramBot();
