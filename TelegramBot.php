@@ -4,8 +4,8 @@ use GuzzleHttp\Client;
 
 class TelegramBot
 {
-
-    protected $token = "613458937:AAEs5eco-y-ozGz5AaisVZHfYR1idKgn284";
+    //613458937:AAEs5eco-y-ozGz5AaisVZHfYR1idKgn284
+    protected $token = "987928654:AAHcrkwh635R8uO1keMm1yF57_WTfgXcwqQ";
 
     protected $updateId;
 
@@ -36,8 +36,9 @@ class TelegramBot
             'offset' => $this->updateId + 1
         ]);
 
-        if (!empty($response)) {
-            $this->updateId = $response->result[count($response->result) - 1]->update_id;
+        if (!empty($response) && isset($response->result[count($response->result) - 1])) {
+            $this->updateId = $response->result[count($response->result) - 1]->
+            update_id;
         }
 
         return $response->result;

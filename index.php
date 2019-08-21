@@ -1,14 +1,15 @@
 <?php
 
-include ("vendor/autoload.php");
-
-include ('TelegramBot.php');
-include ("Weather.php");
+include("vendor/autoload.php");
+include('TelegramBot.php');
+include("Weather.php");
+include ("dbHistory/writeToDatabase.php");
 
 //Получаем сообщения
 $telegramApi = new TelegramBot();
 
 $weatherApi = new Weather();
+
 
 while (true) {
 
@@ -20,6 +21,14 @@ while (true) {
     foreach ($updates as $update) {
 
         if (isset($update->message->location)) {
+
+            //Запись в бд
+            $username = $update->message->chat->username;
+            $latitude = $update->message->location->latitude;
+            $longitude = $update->message->location->longitude;
+
+            writeToDb($username, $latitude, $longitude);
+
             //Получаем погоду
             $result = $weatherApi->getWeather($update->message->location->latitude, $update->message->location->longitude);
 
@@ -87,9 +96,9 @@ while (true) {
 
             //Закат, Рассвет
             $sunset = $result->sys->sunset;
-            $sunset = date("H:i", $sunset );
+            $sunset = date("H:i", $sunset);
             $sunrise = $result->sys->sunrise;
-            $sunrise = date("H:i", $sunrise );
+            $sunrise = date("H:i", $sunrise);
             $response .= "\n\xF0\x9F\x8C\x86 Закат в " . $sunset . "\n\xF0\x9F\x8C\x85 Рассвет в " . $sunrise;
 
             //Местоположение
@@ -119,7 +128,7 @@ while (true) {
             } elseif ($country === "US") {
                 $response .= " \xF0\x9F\x87\xBA\xF0\x9F\x87\xB8	";
             } else {
-                $response .= " " . $country ."";
+                $response .= " " . $country . "";
             }
 
             //На каждое сообщение отвечаем
