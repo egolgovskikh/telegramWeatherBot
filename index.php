@@ -21,7 +21,7 @@ while (true) {
     foreach ($updates as $update) {
         //Логи
         $username = $update->message->chat->username;
-        echo ("{$username} сделал запрос");
+        echo ("{$username} сделал запрос\n");
 
         if (isset($update->message->location)) {
 
