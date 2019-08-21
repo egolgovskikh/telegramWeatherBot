@@ -11,9 +11,9 @@ $telegramApi = new TelegramBot();
 $weatherApi = new Weather();
 
 
-//while (true) {
+while (true) {
 
-    //sleep(2);
+    sleep(2);
 
     $updates = $telegramApi->getUpdates();
 
@@ -146,5 +146,5 @@ $weatherApi = new Weather();
 
     }
 
-//}
+}
 

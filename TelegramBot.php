@@ -37,9 +37,8 @@ class TelegramBot
             'offset' => $this->updateId + 1
         ]);
 
-        if (!empty($response) && isset($response->result[count($response->result) - 1])) {
-            $this->updateId = $response->result[count($response->result) - 1]->
-            update_id;
+        if (!empty($response)) {
+            $this->updateId = $response->result[count($response->result) - 1]->update_id;
         }
 
         return $response->result;
