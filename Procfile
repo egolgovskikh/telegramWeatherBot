@@ -1,1 +1,1 @@
-bot: php index.php
+Web: php index.php
