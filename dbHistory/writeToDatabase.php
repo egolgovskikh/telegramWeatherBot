@@ -21,3 +21,8 @@ function writeToDb ($username, $latitude, $longitude) {
     }
     mysqli_close($link);
 }
+//$username = $update->message->chat->username;
+//$latitude = $update->message->location->latitude;
+//$longitude = $update->message->location->longitude;
+
+//writeToDb($username, $latitude, $longitude);

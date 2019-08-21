@@ -3,7 +3,7 @@
 include("vendor/autoload.php");
 include('TelegramBot.php');
 include("Weather.php");
-include("dbHistory/writeToDatabase.php");
+//include("dbHistory/writeToDatabase.php");
 
 //Получаем сообщения
 $telegramApi = new TelegramBot();
@@ -128,11 +128,7 @@ while (true) {
             $telegramApi->sendMessage($update->message->chat->id, $response);
 
             //Запись в бд
-            $username = $update->message->chat->username;
-            $latitude = $update->message->location->latitude;
-            $longitude = $update->message->location->longitude;
 
-            writeToDb($username, $latitude, $longitude);
 
         } elseif ($update->message->text === "/location") {
             //команда /location
